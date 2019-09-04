@@ -1,0 +1,54 @@
+#!/usr/bin/env bash
+
+#  Copyright 2019 Giacomo Ferretti
+#
+#  Licensed under the Apache License, Version 2.0 (the "License");
+#  you may not use this file except in compliance with the License.
+#  You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+#  Unless required by applicable law or agreed to in writing, software
+#  distributed under the License is distributed on an "AS IS" BASIS,
+#  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+#  See the License for the specific language governing permissions and
+#  limitations under the License.
+
+#https://storage.googleapis.com/dev-euw-gmalstring-mcdonalds/
+#https://storage.googleapis.com/prd-euw-gmalstring-mcdonalds/
+#https://storage.googleapis.com/stg-euw-gmalstring-mcdonalds/
+#https://user-api-dot-dev-euw-gmal-mcdonalds.appspot.com/
+#https://user-api-dot-prd-euw-gmal-mcdonalds.appspot.com/
+#https://user-api-dot-stg-euw-gmal-mcdonalds.appspot.com/
+#https://us-central1-prd-euw-gmal-mcdonalds.cloudfunctions.net/loyalty/
+#https://us-central1-stg-euw-gmal-mcdonalds.cloudfunctions.net/loyalty/
+#https://us-central1-dev-euw-gmal-mcdonalds.cloudfunctions.net/loyalty/
+#https://locationfinder-api-dot-dev-euw-gmal-mcdonalds.appspot.com/
+#https://locationfinder-api-dot-prd-euw-gmal-mcdonalds.appspot.com/
+#https://locationfinder-api-dot-stg-euw-gmal-mcdonalds.appspot.com/
+#https://config-api-dot-dev-euw-gmal-mcdonalds.appspot.com/
+#https://config-api-dot-prd-euw-gmal-mcdonalds.appspot.com/
+#https://config-api-dot-stg-euw-gmal-mcdonalds.appspot.com/
+
+# Name of the patch
+P_NAME="ApeUrlPatch"
+P_VERSION="2.0.0"
+
+URLS=(
+https://storage.googleapis.com/prd-euw-gmalstring-mcdonalds/
+https://user-api-dot-prd-euw-gmal-mcdonalds.appspot.com/
+https://us-central1-prd-euw-gmal-mcdonalds.cloudfunctions.net/loyalty/
+https://locationfinder-api-dot-prd-euw-gmal-mcdonalds.appspot.com/
+https://config-api-dot-prd-euw-gmal-mcdonalds.appspot.com/
+)
+
+# Main function
+function patch {
+  for i in "${URLS[@]}"; do
+    verbose "Searching for ${i}..."
+    grep -lR "${i}" "${PATCH_FOLDER}" | while read -r line; do sed -Ei "s+https://.*/+${TARGET_URL}+g" "${line}"; done
+  done
+}
+
+info "Applying ${P_NAME} [${P_VERSION}]..."
+patch
