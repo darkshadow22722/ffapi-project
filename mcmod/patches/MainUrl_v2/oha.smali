@@ -763,11 +763,11 @@
 
     const/4 v2, 0x0
 
-    aput-object p1, v1, v2
+    aput-object p0, v1, v2
 
     const/4 v2, 0x1
 
-    aput-object p2, v1, v2
+    aput-object p1, v1, v2
 
     invoke-static {v0, v1}, Ljava/lang/String;->format(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
 
