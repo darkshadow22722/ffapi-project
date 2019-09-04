@@ -1,3 +1,11 @@
+## 2.0.5
+### Fixes
+* Fixed `sed` error
+
+## 2.0.4
+### New
+* Added MainUrl patch for newer versions
+
 ## 2.0.3
 ### New
 * Added SafetyNet remover patch
