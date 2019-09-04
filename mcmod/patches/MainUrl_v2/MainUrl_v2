@@ -28,7 +28,7 @@ function patch {
 	if [[ "${VERSION_CODE}" == "${TARGET_VERSION}" ]]; then
 		info "\tPatch compatible with ${VERSION_CODE}!"
 		cp -f "${CUR_FOLDER}/oha.smali" "${TARGET_FILE}"
-		sed -i "s/\"REPLACE\"/\"${TARGET_URL}\"/g" "${TARGET_FILE}"
+		sed -i "s+\"REPLACE\"+\"${TARGET_URL}\"+g" "${TARGET_FILE}"
 	else
 		warning "\tPatch incompatible with ${VERSION_CODE}!"
 	fi
