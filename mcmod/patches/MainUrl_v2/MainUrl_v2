@@ -16,7 +16,7 @@
 
 # Name of the patch
 P_NAME="MainUrl_v2"
-P_VERSION="1.0.0"
+P_VERSION="1.1.0"
 
 CUR_FOLDER="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 
@@ -28,7 +28,7 @@ function patch {
 	if [[ "${VERSION_CODE}" == "${TARGET_VERSION}" ]]; then
 		info "\tPatch compatible with ${VERSION_CODE}!"
 		cp -f "${CUR_FOLDER}/oha.smali" "${TARGET_FILE}"
-		sed -i "s+\"REPLACE\"+\"${TARGET_URL}\"+g" "${TARGET_FILE}"
+		sed -i "s+REPLACE+${TARGET_URL}+g" "${TARGET_FILE}"
 	else
 		warning "\tPatch incompatible with ${VERSION_CODE}!"
 	fi
