@@ -31,7 +31,7 @@ function patch {
 		cp -f "${CUR_FOLDER}/Jma.smali" "${TARGET_FILE}"
 	    sed -i "s/\"REPLACE\"/\"${CUSTOM_SNET_TOKEN}\"/g" "${TARGET_FILE}"
 	else
-		info "\tPatch incompatible with ${VERSION_CODE}!"
+		warning "\tPatch incompatible with ${VERSION_CODE}!"
 	fi
 }
 
