@@ -34,14 +34,14 @@ You can run the patch on Linux, macOS and Windows WSL.
 ## How to patch
 1. First clone this repository using
 `git clone https://github.com/giacomoferretti/ffapi-project`.
-2. Now cd in the `mcmod` folder.
+2. Now cd in the `ffapi-project/mcmod` folder.
 3. Now patch using the `./patch.sh` script. 
 
 Example: (For the URL you can use this: `https://mcmod.hexile.xyz/`)
 
 ```bash
 git clone https://github.com/giacomoferretti/ffapi-project
-cd mcmod
+cd ffapi-project/mcmod
 ./patch.sh <APK_PATH> <TARGET_URL>
 ```
 
