@@ -1,3 +1,7 @@
+## 2.0.6
+### New
+* Added SecureFlagRemover patch
+
 ## 2.0.5
 ### Fixes
 * Fixed `sed` error
