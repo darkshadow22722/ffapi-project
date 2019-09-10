@@ -1,0 +1,20 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+
+# Environments
+venv/
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+
+# IntelliJ
+.idea/
+
+# Custom
+logs
+config.json
+offers.json
+token.txt
+merchants.json

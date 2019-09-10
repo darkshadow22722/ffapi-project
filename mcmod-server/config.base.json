@@ -1,0 +1,41 @@
+{
+  "server": {
+    "name": "mcmod-server",
+    "version": "2.0.0",
+    "debug": false,
+    "host": "127.0.0.1",
+    "port": 5000,
+    "externalUrl": null
+  },
+  "tokenFactory": {
+    "postKeys": [],
+    "getKeys": []
+  },
+  "translationsFolder": "translations",
+  "storage": {
+    "type": "json",
+    "json": {
+      "folder": "users",
+      "file": "{name}.json"
+    },
+    "redis": {
+      "url": "127.0.0.1",
+      "port": 6379,
+      "username": null,
+      "password": null
+    }
+  },
+  "logging": {
+    "level": "info",
+    "format": "[%(asctime)s] %(levelname)s/%(module)s: %(message)s",
+    "dateFormat": "%Y-%m-%d %H:%M:%S",
+    "folder": "logs",
+    "file": "app.log",
+    "separateErrors": true,
+    "errorFile": "error.log",
+    "compress": true,
+    "suffix": "%Y%d%m",
+    "when": "midnight",
+    "interval": 1
+  }
+}
