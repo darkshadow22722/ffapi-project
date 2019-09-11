@@ -15,5 +15,5 @@
 __major__ = 1
 __minor__ = 0
 __patch__ = 0
-__metadata__ = '-beta.1'
+__metadata__ = '-beta.2'
 __version__ = '{}.{}.{}{}'.format(__major__, __minor__, __patch__, __metadata__)
