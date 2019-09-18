@@ -1,0 +1,64 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="xyz.hexile.mcmodpoc">
+
+    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <application
+        android:name="mcdonalds.app.AppApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name="mcdonalds.core.SplashActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <activity android:name="mcdonalds.core.MainActivity"/>
+        <provider android:name="mcdonalds.restaurant.search.RestaurantsSuggestionProvider" android:authorities="jzt.iqzrl"/>
+        <provider android:name="com.google.firebase.provider.FirebaseInitProvider" android:authorities="cur.xgorf"/>
+        <provider android:name="com.facebook.marketing.internal.MarketingInitProvider" android:authorities="fhx.jbkrn"/>
+        <provider android:name="com.facebook.internal.FacebookInitProvider" android:authorities="ewd.bkysb"/>
+        <provider android:name="androidx.lifecycle.ProcessLifecycleOwnerInitializer" android:authorities="bsr.tvcdz"/>
+        <provider android:name="com.squareup.picasso.PicassoProvider" android:authorities="nsz.gtmoz"/>
+        <service android:name="mcdonalds.restaurant.location.LocationService"/>
+        <service android:name="mcdonalds.restaurant.network.RestaurantService"/>
+        <service android:name="mcdonalds.restaurant.network.SearchService"/>
+        <service android:name="mcdonalds.core.service.fcm.GMALiteFcmListenerService"/>
+        <service android:name="mcdonalds.core.service.MarketSwitchJobService"/>
+        <service android:name="mcdonalds.dataprovider.me.geofence.MEGeoFenceJobIntentService"/>
+        <service android:name="mcdonalds.dataprovider.me.geofence.GeoFenceJobIntentService"/>
+        <service android:name="androidx.room.MultiInstanceInvalidationService"/>
+        <service android:name="com.google.firebase.messaging.FirebaseMessagingService"/>
+        <service android:name="co.vmob.sdk.common.DeviceBootService"/>
+        <service android:name="co.vmob.sdk.activity.ActivityService"/>
+        <service android:name="co.vmob.sdk.location.geofence.GeofenceService"/>
+        <service android:name="co.vmob.sdk.location.geofence.GeofenceEventService"/>
+        <service android:name="co.vmob.sdk.location.beacon.BeaconScannerService"/>
+        <service android:name="co.vmob.sdk.location.beacon.BeaconScannerServiceLegacy"/>
+        <service android:name="com.google.android.gms.tagmanager.TagManagerService"/>
+        <service android:name="com.google.firebase.components.ComponentDiscoveryService"/>
+        <service android:name="com.google.android.gms.measurement.AppMeasurementService"/>
+        <service android:name="com.google.android.gms.measurement.AppMeasurementJobService"/>
+        <service android:name="com.firebase.jobdispatcher.GooglePlayReceiver"/>
+        <service android:name="com.digits.sdk.android.ContactsUploadService"/>
+        <service android:name="com.digits.sdk.android.AttributableInviteDownloadService"/>
+        <service android:name="org.altbeacon.beacon.service.BeaconService"/>
+        <service android:name="org.altbeacon.beacon.BeaconIntentProcessor"/>
+        <service android:name="org.altbeacon.beacon.service.ScanJob"/>
+        <service android:name="org.altbeacon.bluetooth.BluetoothTestJob"/>
+        <receiver android:name="co.vmob.sdk.common.DeviceBootReceiver"/>
+        <receiver android:name="mcdonalds.dataprovider.me.fcm.MEFcmNotificationReceiver"/>
+        <receiver android:name="mcdonalds.dataprovider.me.geofence.GeoBroadCastReceiver"/>
+        <receiver android:name="co.vmob.sdk.common.VMobJobReceiver"/>
+        <receiver android:name="co.vmob.sdk.fcm.FCMPushReceiver"/>
+        <receiver android:name="com.google.firebase.iid.FirebaseInstanceIdReceiver"/>
+        <receiver android:name="com.google.android.gms.measurement.AppMeasurementReceiver"/>
+        <receiver android:name="com.google.android.gms.measurement.AppMeasurementInstallReferrerReceiver"/>
+        <receiver android:name="com.facebook.CurrentAccessTokenExpirationBroadcastReceiver"/>
+        <receiver android:name="org.altbeacon.beacon.startup.StartupBroadcastReceiver"/>
+    </application>
+</manifest>
