@@ -6,4 +6,4 @@
 * [McMod](mcmod)
 * [McMod Server](mcmod-server)
 * McMod Node *[Coming soon]*
-* [McMod Poc] (mcmod-poc)
+* [McMod Poc](mcmod-poc)

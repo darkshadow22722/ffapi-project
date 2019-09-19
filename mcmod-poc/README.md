@@ -4,6 +4,10 @@
 
 # McMod Poc
 
+This app was made after about 2 days after McDonald's (Plexure to be precise) 
+updated their system with an "anti-abuse" system, specifically SafetyNet for 
+Android.
+
 ## Requirements
 * Android Studio (I've used 3.5)
 
