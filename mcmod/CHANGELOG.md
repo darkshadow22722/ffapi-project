@@ -1,3 +1,7 @@
+## 2.1.0
+### Fix
+* Automated `MainUrl_v2` and `SafetyNetRemover` patches
+
 ## 2.0.6
 ### New
 * Added SecureFlagRemover patch
