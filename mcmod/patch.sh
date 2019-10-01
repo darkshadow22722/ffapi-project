@@ -26,10 +26,10 @@
 # 108: There was an error zipaligning the APK. Try again.
 # ============== #
 
-WORKING_VERSIONS=( "3221" "3459" "3587" "3807" )
+WORKING_VERSIONS=( "3807" "3964" "4086" )
 
-PATCH_VERSION="2.0.6"
-PATCH_CODE="0206"
+PATCH_VERSION="2.1.0"
+PATCH_CODE="0210"
 
 OUTPUT_FILENAME="mcmod_${PATCH_VERSION}_${PATCH_CODE}"
 
