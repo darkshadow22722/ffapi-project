@@ -19,9 +19,9 @@ function info {
 }
 
 function verbose {
-  if [[ "${VERBOSE}" == true ]]; then
-    echo "[V] ${1}"
-  fi
+    if [[ "${VERBOSE}" == true ]]; then
+        echo "[V] ${1}"
+    fi
 }
 
 function warning {
@@ -63,23 +63,23 @@ function print_apk_info {
 }
 
 function check_apk_version {
-  AAPT_OUTPUT="$(aapt dump badging "${1}")"
-  VERSION_CODE="$(echo "${AAPT_OUTPUT}" | sed -En "s/.*versionCode='([^']*)'.*/\1/p")"
+    AAPT_OUTPUT="$(aapt dump badging "${1}")"
+    VERSION_CODE="$(echo "${AAPT_OUTPUT}" | sed -En "s/.*versionCode='([^']*)'.*/\1/p")"
 
-  echo -e "\e[92mChecking compatibility..."
-  if containsElement "${VERSION_CODE}" "${@:2}"; then
-    echo -e "\e[94mVersion ${VERSION_CODE} is compatible."
-  else
-    echo -e "\e[93mWARNING: Version ${VERSION_CODE} of the app was not tested. The patch may not work."
-  fi
-  echo
+    echo -e "\e[92mChecking compatibility..."
+    if containsElement "${VERSION_CODE}" "${@:2}"; then
+        echo -e "\e[94mVersion ${VERSION_CODE} is compatible."
+    else
+        echo -e "\e[93mWARNING: Version ${VERSION_CODE} of the app was not tested. The patch may not work."
+    fi
+    echo
 }
 
 function containsElement {
-  local e match="$1"
-  shift
-  for e; do [[ "$e" == "$match" ]] && return 0; done
-  return 1
+    local e match="$1"
+    shift
+    for e; do [[ "$e" == "$match" ]] && return 0; done
+    return 1
 }
 
 function cleanup {

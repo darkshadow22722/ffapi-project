@@ -20,9 +20,9 @@ P_VERSION="1.0.0"
 
 # Main function
 function patch {
-  grep -lR "\->setSecureFlag()V" "${PATCH_FOLDER}" | while read -r line; do
-    sed -i "s/invoke-virtual.*setSecureFlag()V/const-string v0, \"McMod_NoSecureFlags\"/g" "${line}"
-  done
+    grep -lR "\->setSecureFlag()V" "${PATCH_FOLDER}" | while read -r line; do
+        sed -i "s/invoke-virtual.*setSecureFlag()V/const-string v0, \"McMod_NoSecureFlags\"/g" "${line}"
+    done
 }
 
 info "Applying ${P_NAME} [${P_VERSION}]..."

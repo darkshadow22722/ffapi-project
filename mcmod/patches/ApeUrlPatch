@@ -44,10 +44,10 @@ https://config-api-dot-prd-euw-gmal-mcdonalds.appspot.com/
 
 # Main function
 function patch {
-  for i in "${URLS[@]}"; do
-    verbose "Searching for ${i}..."
-    grep -lR "${i}" "${PATCH_FOLDER}" | while read -r line; do sed -Ei "s+https://.*/+${TARGET_URL}+g" "${line}"; done
-  done
+    for i in "${URLS[@]}"; do
+        verbose "Searching for ${i}..."
+        grep -lR "${i}" "${PATCH_FOLDER}" | while read -r line; do sed -Ei "s+https://.*/+${TARGET_URL}+g" "${line}"; done
+    done
 }
 
 info "Applying ${P_NAME} [${P_VERSION}]..."
