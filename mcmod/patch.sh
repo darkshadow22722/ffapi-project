@@ -116,6 +116,8 @@ NAME=$(basename "${1}" .apk)
 print_apk_info "${1}"
 check_apk_version "${1}" "${WORKING_VERSIONS[@]}"
 
+OUTPUT_FILENAME="${OUTPUT_FILENAME}_${VERSION_CODE}"
+
 # Generate keystore
 if [[ ! -f "${KEYSTORE}" ]]; then
     info "Generating keystore: ${KEYSTORE}..."
