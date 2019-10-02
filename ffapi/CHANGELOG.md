@@ -6,4 +6,4 @@
 * Fixed promocode generation (Italy)
 
 ## 1.0.0-beta.1
-*  First public release
+* First public release
