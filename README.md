@@ -4,34 +4,40 @@
 [![GitHub license](https://img.shields.io/github/license/giacomoferretti/ffapi-project.svg?color=informational)](https://github.com/giacomoferretti/ffapi-project/blob/master/LICENSE)
 [![Donate](https://img.shields.io/badge/Donate-Paypal-blue.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=VN66MND8DYCGE&source=url)
 
+[bash]: https://img.shields.io/badge/Language-Bash-brightgreen "Bash"
+[java]: https://img.shields.io/badge/Language-Java-red "Java"
+[android]: https://img.shields.io/badge/Language-Android-brightgreen "Android"
+[python3]: https://img.shields.io/badge/Language-Python_3-blue "Python 3"
+
 # Fast Food API Project
 
 ## Repos
 
-### [FFAPI Python Library](ffapi)
+### [FFAPI Library](ffapi) [![python3]](#)
 This library contains all the necessary endpoints and other stuff to communicate
 with various fast food servers.
 
-### Telegram Bot *[Coming soon]*
+### Telegram Bot [![python3]](#)
+*\[Coming soon\]*
 
-### [McMod](mcmod)
+### [McMod](mcmod) [![bash]](#)
 *(McDonald's only)*
 
 This repo has all the tools to patch the original McDonald's APK to make it
 communicate with a custom server (like McMod Server).
 
-### [McMod Server](mcmod-server)
+### [McMod Server](mcmod-server) [![python3]](#)
 *(McDonald's only)*
 
 This server is needed to generate coupons for the Telegram Bot and to use the
 McMod app.
 
-### [McMod Node](mcmod-node)
+### [McMod Node](mcmod-node) [![java]](#) [![android]](#)
 *(McDonald's only)*
 
 This app is needed to generate SafetyNet token to generate coupons with McMod Server.
 
-### [McMod Poc](mcmod-poc)
+### [McMod Poc](mcmod-poc) [![java]](#) [![android]](#)
 *(McDonald's only)*
 
 This app is a Proof of Concept of the node. It was made as soon as McDonald's
