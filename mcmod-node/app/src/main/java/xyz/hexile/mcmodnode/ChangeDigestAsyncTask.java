@@ -90,7 +90,7 @@ public class ChangeDigestAsyncTask extends AsyncTask<Void, String, String> {
 
             // Search for extra data
             publishProgress("Searching for extra data...");
-            byte[] extraPattern = new byte[]{80, 108, 101, 120, 117, 114, 101, 77, 101, 114, 100, 97};
+            byte[] extraPattern = new byte[]{80, 108, 101, 120, 117, 114, 101, 65, 98, 117, 115, 101};
             int extraOffset = Utils.indexOf(apkData, extraPattern);
             int extraLength = 10;
 
