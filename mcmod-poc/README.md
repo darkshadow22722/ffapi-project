@@ -1,9 +1,6 @@
-[donate]: https://paypal.me/hexile0
-[janus]: https://github.com/giacomoferretti/janus-toolkit
-
 [![Donate](https://img.shields.io/badge/Donate-Paypal-blue.svg)][donate]
 
-# McMod Poc
+# McMod PoC
 
 This app was made after about 2 days after McDonald's (Plexure to be precise) 
 updated their system with an "anti-abuse" system, specifically SafetyNet for 
@@ -37,9 +34,12 @@ Android.
 
 6. Use [Janus] to inject the extracted `classes.dex` into the APK
 
-	`./janus.py -c classes.dex mcdonalds_extra.apk node.apk`
+	`./janus.py -c classes.dex mcdonalds.apk poc.apk`
 
 7. Install the APK in your device
 
 ## Donate
 If this repository helped you in any way, feel free to donate [here][donate].
+
+[donate]: https://paypal.me/hexile0
+[janus]: https://github.com/giacomoferretti/janus-toolkit

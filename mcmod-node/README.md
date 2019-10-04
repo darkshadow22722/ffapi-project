@@ -1,6 +1,3 @@
-[donate]: https://paypal.me/hexile0
-[janus]: https://github.com/giacomoferretti/janus-toolkit
-
 [![Donate](https://img.shields.io/badge/Donate-Paypal-blue.svg)][donate]
 
 # McMod Node
@@ -43,3 +40,6 @@
 
 ## Donate
 If this repository helped you in any way, feel free to donate [here][donate].
+
+[donate]: https://paypal.me/hexile0
+[janus]: https://github.com/giacomoferretti/janus-toolkit
