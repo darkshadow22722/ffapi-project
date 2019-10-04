@@ -34,7 +34,7 @@
 
 7. Use [Janus] to inject the extracted `classes.dex` into the APK
 
-	`./janus.py -c classes.dex mcdonalds_extra.apk node.apk`
+	`./janus.py -d classes.dex mcdonalds_extra.apk node.apk`
 
 8. Install the APK in your device
 

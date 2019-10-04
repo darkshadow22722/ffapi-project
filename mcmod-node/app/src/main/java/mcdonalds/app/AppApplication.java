@@ -10,7 +10,7 @@ import okhttp3.OkHttpClient;
 
 public class AppApplication extends Application {
     public static final String TITLE = "McMod Node";
-    public static final String API_KEY = "YOU_HAVE_TO_GET_THIS_YOURSELF";
+    public static final String API_KEY = "AIzaSyXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX";
 
     public static final String SHARED_PREFS_FILE = "node_settings";
     public static final String SETTINGS_NODE_DB = "node_db";
