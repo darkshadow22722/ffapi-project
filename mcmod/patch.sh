@@ -41,10 +41,16 @@ KEYSTORE_ALIAS="mcmod_keystore"
 # !!! DO NOT EDIT BEYOND THIS !!! #
 # =============================== #
 
-echo -e "# =================================== #"
-echo -e "| \e[92mMcMod Patcher\e[0m - developed by Hexile |"
-echo -e "# =================================== #"
-echo -e "  \e[94m${PATCH_VERSION} - ${PATCH_CODE}\e[0m"
+C_RED=$(tput setaf 9)
+C_GREEN=$(tput setaf 10)
+C_YELLOW=$(tput setaf 11)
+C_BLUE=$(tput setaf 12)
+C_RESET=$(tput sgr0)
+
+echo "# =================================== #"
+echo "| ${C_GREEN}McMod Patcher${C_RESET} - developed by Hexile |"
+echo "# =================================== #"
+echo "  ${C_BLUE}${PATCH_VERSION} - ${PATCH_CODE}${C_RESET}"
 
 COMMAND_USAGE="
 Usage:
@@ -101,10 +107,10 @@ check_command sed
 
 # Check input variables
 if [[ -z "${1}" || -z "${2}" ]]; then
-    error "Missing an argument.\e[0m${COMMAND_USAGE}" 100
+    error "Missing an argument.${C_RESET}${COMMAND_USAGE}" 100
 fi
 
-echo -e "\n\e[94mFile path:\e[0m ${1}\n\e[94mTarget URL:\e[0m ${2}"
+echo "\n${C_BLUE}File path:${C_RESET} ${1}\n${C_BLUE}Target URL:${C_RESET} ${2}"
 
 # Check if input file exists
 if [[ ! -f "${1}" ]]; then
@@ -173,4 +179,4 @@ fi
 
 print_apk_info "${OUTPUT_FILENAME}.apk"
 
-echo -e "\e[32mDone!\e[0m"
+echo "${C_GREEN}Done!${C_RESET}"

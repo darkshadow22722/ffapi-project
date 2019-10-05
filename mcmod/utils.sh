@@ -15,7 +15,7 @@
 #  limitations under the License.
 
 function info {
-    echo -e "\e[94m[I] ${1}\e[0m"
+    echo "${C_BLUE}[I] ${1}${C_RESET}"
 }
 
 function verbose {
@@ -25,11 +25,11 @@ function verbose {
 }
 
 function warning {
-    echo -e "\e[93m[W] ${1}\e[0m"
+    echo "${C_YELLOW}[W] ${1}${C_RESET}"
 }
 
 function error {
-    echo -e "\n\e[91m[E${2}] ${1}\e[0m"
+    echo "\n${C_RED}[E${2}] ${1}${C_RESET}"
     cleanup
     exit "${2}"
 }
@@ -53,12 +53,12 @@ function print_apk_info {
     SUPPORTED_ARCHS="$(echo "${AAPT_OUTPUT}" | sed -En "s/native-code: (.*)/\1/p")"
 
     echo
-    echo -e "\e[92mPackage info for ${1}:\e[0m"
-    echo -e "\e[94mApp Label:\e[0m ${APP_LABEL}"
-    echo -e "\e[94mPackage Name:\e[0m ${PACKAGE_NAME}"
-    echo -e "\e[94mVersion Name:\e[0m ${VERSION_NAME}"
-    echo -e "\e[94mVersion Code:\e[0m ${VERSION_CODE}"
-    echo -e "\e[94mSupported Architectures:\e[0m ${SUPPORTED_ARCHS}"
+    echo "${C_GREEN}Package info for ${1}:${C_RESET}"
+    echo "${C_BLUE}App Label:${C_RESET} ${APP_LABEL}"
+    echo "${C_BLUE}Package Name:${C_RESET} ${PACKAGE_NAME}"
+    echo "${C_BLUE}Version Name:${C_RESET} ${VERSION_NAME}"
+    echo "${C_BLUE}Version Code:${C_RESET} ${VERSION_CODE}"
+    echo "${C_BLUE}Supported Architectures:${C_RESET} ${SUPPORTED_ARCHS}"
     echo
 }
 
@@ -66,11 +66,11 @@ function check_apk_version {
     AAPT_OUTPUT="$(aapt dump badging "${1}")"
     VERSION_CODE="$(echo "${AAPT_OUTPUT}" | sed -En "s/.*versionCode='([^']*)'.*/\1/p")"
 
-    echo -e "\e[92mChecking compatibility..."
+    echo "${C_GREEN}Checking compatibility..."
     if containsElement "${VERSION_CODE}" "${@:2}"; then
-        echo -e "\e[94mVersion ${VERSION_CODE} is compatible."
+        echo "${C_BLUE}Version ${VERSION_CODE} is compatible."
     else
-        echo -e "\e[93mWARNING: Version ${VERSION_CODE} of the app was not tested. The patch may not work."
+        echo "${C_YELLOW}WARNING: Version ${VERSION_CODE} of the app was not tested. The patch may not work."
     fi
     echo
 }
