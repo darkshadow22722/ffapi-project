@@ -20,7 +20,7 @@ function info {
 
 function verbose {
     if [[ "${VERBOSE}" == true ]]; then
-        echo "${C_BLUE}[V] ${1}${C_RESET}"
+        echo "${C_DARK_BLUE}[V] ${1}${C_RESET}"
     fi
 }
 
