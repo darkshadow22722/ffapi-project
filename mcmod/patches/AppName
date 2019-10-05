@@ -24,6 +24,7 @@ NEW_NAME="McMod"
 
 # Main function
 function patch {
+    verbose " ↪ Patching ${TARGET_FILE}..."
     sed -i "" "s/\"McDonald's\"/\"${NEW_NAME}\"/g" "${TARGET_FILE}"
 }
 

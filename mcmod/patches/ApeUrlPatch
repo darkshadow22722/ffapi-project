@@ -47,6 +47,7 @@ function patch {
     for i in "${URLS[@]}"; do
         verbose "Searching for ${i}..."
         grep -lR "${i}" "${PATCH_FOLDER}" | while read -r line; do
+            verbose " ↪ Patching ${line}..."
             sed -Ei "" "s+https://.*/+${TARGET_URL}+g" "${line}"
         done
     done

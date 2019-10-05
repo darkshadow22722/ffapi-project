@@ -24,6 +24,7 @@ FORMAT="${VERSION_CODE}${PATCH_CODE}"
 
 # Main function
 function patch {
+    verbose " ↪ Patching ${TARGET_FILE}..."
     sed -Ei "" "s/versionCode: '(.*)'/versionCode: '${FORMAT}'/g" "${TARGET_FILE}"
 }
 
