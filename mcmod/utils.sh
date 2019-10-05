@@ -48,7 +48,7 @@ function check_file {
 function print_apk_info {
     AAPT_OUTPUT="$(aapt dump badging "${1}")"
     APP_LABEL="$(echo "${AAPT_OUTPUT}" | sed -En "s/application-label:'(.*)'/\1/p")"
-    PACKAGE_NAME="$(echo "${AAPT_OUTPUT}" | sed -En "1 s/.*\sname='([^']*)'.*/\1/p")"
+    PACKAGE_NAME="$(echo "${AAPT_OUTPUT}" | sed -En "s/package: name='([^']*)'.*/\1/p")"
     VERSION_CODE="$(echo "${AAPT_OUTPUT}" | sed -En "s/.*versionCode='([^']*)'.*/\1/p")"
     VERSION_NAME="$(echo "${AAPT_OUTPUT}" | sed -En "s/.*versionName='([^']*)'.*/\1/p")"
     SUPPORTED_ARCHS="$(echo "${AAPT_OUTPUT}" | sed -En "s/native-code: (.*)/\1/p")"
