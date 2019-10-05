@@ -22,7 +22,7 @@ P_VERSION="1.1.0"
 function patch {
     grep -lR "\->setSecureFlag()V" "${PATCH_FOLDER}" | while read -r line; do
         verbose " ↪ Patching ${line}..."
-        sed -i"" "s/invoke-virtual.*setSecureFlag()V/const-string v0, \"McMod_NoSecureFlags\"/g" "${line}"
+        sed -i"" -E "s/invoke-virtual.*setSecureFlag()V/const-string v0, \"McMod_NoSecureFlags\"/g" "${line}"
     done
 }
 
