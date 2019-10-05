@@ -19,7 +19,7 @@ You can run the patch on Linux, macOS and Windows WSL.
 * git
 * openjdk
 
-### macOS (Haven't tested yet)
+### macOS (NOT WORKING ATM)
 #### Requirements
 * git
 * openjdk
