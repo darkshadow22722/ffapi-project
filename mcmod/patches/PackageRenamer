@@ -25,7 +25,7 @@ function patch {
     # find "${PATCH_FOLDER}" -printf '%p' -type f ! -path '*/assets/*' ! -path '*/apktool.yml' -exec sed -i "s/com.mcdonalds.mobileapp/${NEW_PACKAGE}/g" {} +
     grep -lR --exclude="apktool.yml" --exclude-dir="assets" "${PACKAGE_NAME//./\\.}" "${PATCH_FOLDER}" | while read -r line; do
         verbose " ↪ Patching ${line}..."
-        sed -i"" -E "s/${PACKAGE_NAME}/${NEW_PACKAGE}/g" "${line}"
+        _sed "s/${PACKAGE_NAME}/${NEW_PACKAGE}/g" "${line}"
     done
 }
 

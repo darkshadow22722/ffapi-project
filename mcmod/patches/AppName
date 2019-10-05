@@ -25,7 +25,7 @@ NEW_NAME="McMod"
 # Main function
 function patch {
     verbose " ↪ Patching ${TARGET_FILE}..."
-    sed -i"" -E "s/\"McDonald's\"/\"${NEW_NAME}\"/g" "${TARGET_FILE}"
+    _sed "s/\"McDonald's\"/\"${NEW_NAME}\"/g" "${TARGET_FILE}"
 }
 
 info "Applying ${P_NAME} [${P_VERSION}]..."

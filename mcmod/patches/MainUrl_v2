@@ -24,7 +24,7 @@ PATCH_STRING="const-string v0, \"${TARGET_URL}%s-%s\"\nconst/4 v1, 0x2\nnew-arra
 function patch {
     grep -lR "const-string v0, \"di\"" "${PATCH_FOLDER}" | while read -r line; do
         verbose " ↪ Patching ${line}..."
-        sed -i"" -E "/const-string v0, \"https:\/\/\"/,/return-object v0/c${PATCH_STRING//\//\\/}" "${line}"
+        _sed "/const-string v0, \"https:\/\/\"/,/return-object v0/c${PATCH_STRING//\//\\/}" "${line}"
     done
 }
 

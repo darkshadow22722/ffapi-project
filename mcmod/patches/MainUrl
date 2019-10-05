@@ -16,13 +16,12 @@
 
 # Name of the patch
 P_NAME="MainUrl"
-P_VERSION="2.1.0"
+P_VERSION="2.0.0"
 
 # Main function
 function patch {
     grep -lR "https://%s-%s.vmobapps.com/v3" "${PATCH_FOLDER}" | while read -r line; do
-        verbose " ↪ Patching ${line}..."
-        sed -i"" "s+https://%s-%s.vmobapps.com/v3+${TARGET_URL}%s-%s+g" "${line}"
+        _sed "s+https://%s-%s.vmobapps.com/v3+${TARGET_URL}%s-%s+g" "${line}"
     done
 }
 

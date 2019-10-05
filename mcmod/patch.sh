@@ -45,6 +45,7 @@ C_RED=$(tput setaf 9)
 C_GREEN=$(tput setaf 10)
 C_YELLOW=$(tput setaf 11)
 C_BLUE=$(tput setaf 12)
+C_DARK_BLUE=$(tput setaf 4)
 C_RESET=$(tput sgr0)
 
 echo "# =================================== #"
@@ -104,6 +105,16 @@ export PATH="$(pwd)/bin/universal/:$PATH"
 check_command java
 check_command jarsigner
 check_command sed
+
+# Custom sed function
+_sed () {
+    if [[ "$(uname)" == "Darwin" ]]; then
+        sed -i '' "$@"
+    elif [[ "$(uname -s | cut -c -5)" == "Linux" ]]; then
+        sed -i "$@"
+    fi
+}
+
 
 # Check input variables
 if [[ -z "${1}" || -z "${2}" ]]; then

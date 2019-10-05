@@ -25,7 +25,7 @@ FORMAT="${VERSION_CODE}${PATCH_CODE}"
 # Main function
 function patch {
     verbose " ↪ Patching ${TARGET_FILE}..."
-    sed -i"" -E "s/versionCode: '(.*)'/versionCode: '${FORMAT}'/g" "${TARGET_FILE}"
+    _sed -E "s/versionCode: '(.*)'/versionCode: '${FORMAT}'/g" "${TARGET_FILE}"
 }
 
 info "Applying ${P_NAME} [${P_VERSION}]..."
