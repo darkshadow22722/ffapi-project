@@ -32,7 +32,7 @@
 
 # Name of the patch
 P_NAME="ApeUrlPatch"
-P_VERSION="2.0.0"
+P_VERSION="2.1.0"
 
 URLS=(
 https://storage.googleapis.com/prd-euw-gmalstring-mcdonalds/
@@ -46,7 +46,9 @@ https://config-api-dot-prd-euw-gmal-mcdonalds.appspot.com/
 function patch {
     for i in "${URLS[@]}"; do
         verbose "Searching for ${i}..."
-        grep -lR "${i}" "${PATCH_FOLDER}" | while read -r line; do sed -Ei "s+https://.*/+${TARGET_URL}+g" "${line}"; done
+        grep -lR "${i}" "${PATCH_FOLDER}" | while read -r line; do
+            sed -Ei "" "s+https://.*/+${TARGET_URL}+g" "${line}"
+        done
     done
 }
 

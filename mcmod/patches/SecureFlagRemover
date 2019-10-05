@@ -16,12 +16,12 @@
 
 # Name of the patch
 P_NAME="SecureFlagRemover"
-P_VERSION="1.0.0"
+P_VERSION="1.1.0"
 
 # Main function
 function patch {
     grep -lR "\->setSecureFlag()V" "${PATCH_FOLDER}" | while read -r line; do
-        sed -i "s/invoke-virtual.*setSecureFlag()V/const-string v0, \"McMod_NoSecureFlags\"/g" "${line}"
+        sed -i "" "s/invoke-virtual.*setSecureFlag()V/const-string v0, \"McMod_NoSecureFlags\"/g" "${line}"
     done
 }
 
