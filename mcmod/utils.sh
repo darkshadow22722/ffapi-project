@@ -20,7 +20,7 @@ function info {
 
 function verbose {
     if [[ "${VERBOSE}" == true ]]; then
-        echo "[V] ${1}"
+        echo "${C_BLUE}[V] ${1}${C_RESET}"
     fi
 }
 
@@ -29,7 +29,8 @@ function warning {
 }
 
 function error {
-    echo "\n${C_RED}[E${2}] ${1}${C_RESET}"
+    echo
+    echo "${C_RED}[E${2}] ${1}${C_RESET}"
     cleanup
     exit "${2}"
 }

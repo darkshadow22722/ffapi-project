@@ -110,7 +110,9 @@ if [[ -z "${1}" || -z "${2}" ]]; then
     error "Missing an argument.${C_RESET}${COMMAND_USAGE}" 100
 fi
 
-echo "\n${C_BLUE}File path:${C_RESET} ${1}\n${C_BLUE}Target URL:${C_RESET} ${2}"
+echo
+echo "${C_BLUE}File path:${C_RESET} ${1}"
+echo "${C_BLUE}Target URL:${C_RESET} ${2}"
 
 # Check if input file exists
 if [[ ! -f "${1}" ]]; then
@@ -141,7 +143,7 @@ info "Decompiling in ${PATCH_FOLDER}..."
 apktool d -p "${FRAMEWORK}" -f "${1}" -o "${PATCH_FOLDER}" || error "There was an error decompiling the apk." 103
 
 # Run patches
-for f in $(find "patches/" -maxdepth 2 -type f ! -path "*.*" | sort -n); do source "${f}" || error "There was an error with the patch ${f}" 106; done
+for f in $(find "patches/" -maxdepth 2 -type f ! -path "*.disabled" ! -path "*.bak" | sort -n); do source "${f}" || error "There was an error with the patch ${f}" 106; done
 
 # Wait to recompile
 if [[ "${WAIT}" == true ]]; then
