@@ -26,10 +26,10 @@ FORMAT="${VERSION_NAME}_mod_${PATCH_VERSION}"
 # Main function
 function patch {
     verbose " ↪ Patching ${TARGET_FILE_1}..."
-    sed -Ei "" "s/platformBuildVersionName=\"(.*)\"/platformBuildVersionName=\"${FORMAT}\"/g" "${TARGET_FILE_1}"
-    
+    sed -i"" -E "s/platformBuildVersionName=\"(.*)\"/platformBuildVersionName=\"${FORMAT}\"/g" "${TARGET_FILE_1}"
+
     verbose " ↪ Patching ${TARGET_FILE_2}..."
-    sed -Ei "" "s/versionName: (.*)/versionName: ${FORMAT}/g" "${TARGET_FILE_2}"
+    sed -i"" -E "s/versionName: (.*)/versionName: ${FORMAT}/g" "${TARGET_FILE_2}"
 }
 
 info "Applying ${P_NAME} [${P_VERSION}]..."

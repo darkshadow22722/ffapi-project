@@ -30,7 +30,7 @@ function patch {
 
     grep -lR "invoke-virtual {v0, v1, v2}, Lcom/google/android/gms/safetynet/SafetyNetClient;->a(\[BLjava/lang/String;)Lcom/google/android/gms/tasks/Task;" "${PATCH_FOLDER}" | while read -r line; do
         verbose " ↪ Patching ${line}..."
-        sed -i "" "/if-eqz p1, :cond_0/,/return-void/c${PATCH_STRING//\//\\/}" "${line}"
+        sed -i"" "/if-eqz p1, :cond_0/,/return-void/c${PATCH_STRING//\//\\/}" "${line}"
     done
 }
 
