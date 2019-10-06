@@ -16,7 +16,7 @@
 
 # Name of the patch
 P_NAME="SafetyNetRemover"
-P_VERSION="2.1.0"
+P_VERSION="2.2.0"
 
 CUSTOM_SNET_TOKEN="McMod"
 

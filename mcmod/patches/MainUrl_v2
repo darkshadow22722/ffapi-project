@@ -16,7 +16,7 @@
 
 # Name of the patch
 P_NAME="MainUrl_v2"
-P_VERSION="2.1.0"
+P_VERSION="2.2.0"
 
 PATCH_STRING="const-string v0, \"${TARGET_URL}%s-%s\"\nconst/4 v1, 0x2\nnew-array v1, v1, [Ljava/lang/Object;\nconst/4 v2, 0x0\naput-object p0, v1, v2\nconst/4 v2, 0x1\naput-object p1, v1, v2\ninvoke-static {v0, v1}, Ljava/lang/String;->format(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;\nmove-result-object v0\nreturn-object v0"
 
