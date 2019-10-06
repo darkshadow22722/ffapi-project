@@ -23,11 +23,8 @@ CUSTOM_SNET_TOKEN="McMod"
 # Main function
 function patch {
     while read -r line; do
-        echo "${line}"
         EXTRACTED=$(perl -ne 'print "$1" if /check-cast v0, (.*)/' ${line})
     done <<< "$(grep -lR "check-cast p1, Lcom/google/android/gms/safetynet/SafetyNetApi\$AttestationResponse;" "${PATCH_FOLDER}")"
-
-    echo "EXTRACTED: ${EXTRACTED}"
 
     PATCH_STRING="if-eqz p1, :cond_0\ncheck-cast p1, ${EXTRACTED}\nconst-string v1, \"${CUSTOM_SNET_TOKEN}\"\ninvoke-virtual {p1, v1}, ${EXTRACTED}->a(Ljava/lang/Object;)V\nreturn-void"
 
