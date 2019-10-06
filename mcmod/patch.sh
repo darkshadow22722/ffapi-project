@@ -105,16 +105,7 @@ export PATH="$(pwd)/bin/universal/:$PATH"
 check_command java
 check_command jarsigner
 check_command sed
-
-# Custom sed function
-_sed () {
-    if [[ "$(uname)" == "Darwin" ]]; then
-        sed -i '' "$@"
-    elif [[ "$(uname -s | cut -c -5)" == "Linux" ]]; then
-        sed -i "$@"
-    fi
-}
-
+check_command grep
 
 # Check input variables
 if [[ -z "${1}" || -z "${2}" ]]; then

@@ -14,6 +14,15 @@
 #  See the License for the specific language governing permissions and
 #  limitations under the License.
 
+# Custom sed function
+_sed () {
+    if [[ "$(uname)" == "Darwin" ]]; then
+        sed -i '' "$@"
+    elif [[ "$(uname -s | cut -c -5)" == "Linux" ]]; then
+        sed -i "$@"
+    fi
+}
+
 function info {
     echo "${C_BLUE}[I] ${1}${C_RESET}"
 }
