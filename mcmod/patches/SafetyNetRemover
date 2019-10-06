@@ -23,14 +23,22 @@ CUSTOM_SNET_TOKEN="McMod"
 # Main function
 function patch {
     while read -r line; do
-        EXTRACTED=$(sed -ne '/.*check-cast v0, \(.*\)/{ s//\1/p }' ${line})
+        echo "${line}"
+        EXTRACTED=$(perl -ne 'print "$1" if /check-cast v0, (.*)/' ${line})
     done <<< "$(grep -lR "check-cast p1, Lcom/google/android/gms/safetynet/SafetyNetApi\$AttestationResponse;" "${PATCH_FOLDER}")"
+
+    echo "EXTRACTED: ${EXTRACTED}"
 
     PATCH_STRING="if-eqz p1, :cond_0\ncheck-cast p1, ${EXTRACTED}\nconst-string v1, \"${CUSTOM_SNET_TOKEN}\"\ninvoke-virtual {p1, v1}, ${EXTRACTED}->a(Ljava/lang/Object;)V\nreturn-void"
 
     grep -lR "invoke-virtual {v0, v1, v2}, Lcom/google/android/gms/safetynet/SafetyNetClient;->a(\[BLjava/lang/String;)Lcom/google/android/gms/tasks/Task;" "${PATCH_FOLDER}" | while read -r line; do
         verbose " ↪ Patching ${line}..."
-        _sed "/if-eqz p1, :cond_0/,/return-void/c${PATCH_STRING//\//\\/}" "${line}"
+        if [[ "$(uname)" == "Darwin" ]]; then
+            sed -i '' "/if-eqz p1, :cond_0/,/return-void/c\ 
+            ${PATCH_STRING//\//\\/}" "${line}"
+        elif [[ "$(uname -s | cut -c -5)" == "Linux" ]]; then
+            sed -i "/if-eqz p1, :cond_0/,/return-void/c${PATCH_STRING//\//\\/}" "${line}"
+        fi
     done
 }
 
