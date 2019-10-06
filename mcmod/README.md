@@ -14,22 +14,31 @@ You need to have the McDonald's app APK file. You can download it in three ways:
 You can run the patch on Linux, macOS and Windows WSL.
 
 ## Setup
-### Linux
-#### Requirements
-* git
-* openjdk
-
-### macOS (NOT WORKING ATM)
-#### Requirements
-* git
-* openjdk
-
 ### Windows
 #### Requirements
 1. Enable WSL by following the guide [here](https://aka.ms/wslinstall).
 2. Download Debian or Ubuntu from the store.
 3. Run the installed WSL and run these command:
 `sudo apt update && sudo apt install git default-jdk`
+
+### Linux
+#### Requirements
+* git
+* openjdk
+
+### macOS
+#### Requirements
+To get the following two popups, simple run the [commands](#how-to-patch) below, then
+follow the instructions provided by the popups.
+
+* git
+
+    [![](../.images/git_macos.png)](#)
+
+* JDK (you can download it
+[here](https://www.oracle.com/technetwork/java/javase/downloads/index.html))
+
+	[![](../.images/jdk_macos.png)](#)
 
 ## How to patch
 1. First clone this repository using
@@ -47,8 +56,8 @@ cd ffapi-project/mcmod
 
 _Only if you are using WSL:_ 
 
-To get the modded APK to the Desktop run this command: 
-`cp *.apk /mnt/c/Users/[USER]/Desktop`
+To copy the modded APK to your Desktop, use this command:
+`cp *.apk /mnt/c/Users/[YOUR_USER]/Desktop`
 
 ## Donate
 If this repository helped you in any way, feel free to donate [here][donate].
