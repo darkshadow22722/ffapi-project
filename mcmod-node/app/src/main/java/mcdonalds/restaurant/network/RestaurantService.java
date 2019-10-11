@@ -372,10 +372,16 @@ public class RestaurantService extends Service {
                     }
                 })
                 .addOnFailureListener(e -> {
-                    if (e.getMessage().equals("16: ")) {
-                        sendLog("E:16", "SafetyNet rate limit.");
-                    } else {
-                        sendLog("E", e.getMessage());
+                    switch (e.getMessage()) {
+                        case "16: ":
+                            sendLog("E:16", "SafetyNet: CANCELED (ratelimit)");
+                            break;
+                        case "7: ":
+                            sendLog("E:7", "SafetyNet: NETWORK_ERROR");
+                            break;
+                        default:
+                            sendLog("E", e.getMessage());
+                            break;
                     }
                     e.printStackTrace();
                 });
