@@ -1,3 +1,8 @@
+## 2.3.0
+### Fix
+* Switched keystore to PKCS12
+* Using `apksigner` instead of `jarsigner` to sign with Android scheme v2
+
 ## 2.2.0
 ### Fix
 * Fixed macOS compatibility
