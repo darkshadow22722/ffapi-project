@@ -131,7 +131,12 @@ OUTPUT_FILENAME="${OUTPUT_FILENAME}_${VERSION_CODE}"
 # Generate keystore
 if [[ ! -f "${KEYSTORE}" ]]; then
     info "Generating keystore: ${KEYSTORE}..."
-    keytool -genkeypair -alias "${KEYSTORE_ALIAS}" -keypass "${KEYSTORE_PASS}" -keystore "${KEYSTORE}" -storepass "${KEYSTORE_PASS}" -keyalg RSA -sigalg SHA1withRSA -dname "CN=mcmod,OU=mcmod,O=mcmod,L=mcmod,ST=mcmod,C=mcmod" -validity 10000
+    keytool -genkeypair -alias "${KEYSTORE_ALIAS}" \
+        -keypass "${KEYSTORE_PASS}" -keystore "${KEYSTORE}" \
+        -storepass "${KEYSTORE_PASS}" -keyalg RSA -sigalg SHA1withRSA \
+        -storetype PKCS12 \
+        -dname "${KEYSTORE_DNAME}" \
+        -validity 10000    
 fi
 
 if [[ "${2: -1}" != "/" ]]; then
