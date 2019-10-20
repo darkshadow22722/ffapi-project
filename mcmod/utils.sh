@@ -72,6 +72,20 @@ function print_apk_info {
     echo
 }
 
+function print_apk_signed_info {
+    APKSIGNER_OUTPUT="$(apksigner verify -v "${1}")"
+    V1_SCHEME="$(echo "${APKSIGNER_OUTPUT}" | sed -n "s/Verified using v1 scheme (JAR signing): //p")"
+    V2_SCHEME="$(echo "${APKSIGNER_OUTPUT}" | sed -n "s/Verified using v2 scheme (APK Signature Scheme v2): //p")"
+    V3_SCHEME="$(echo "${APKSIGNER_OUTPUT}" | sed -n "s/Verified using v3 scheme (APK Signature Scheme v3): //p")"
+
+    echo
+    echo "${C_GREEN}Signature info for ${1}:${C_RESET}"
+    echo "${C_BLUE}Signed v1:${C_RESET} ${V1_SCHEME}"
+    echo "${C_BLUE}Signed v2:${C_RESET} ${V2_SCHEME}"
+    echo "${C_BLUE}Signed v3:${C_RESET} ${V3_SCHEME}"
+    echo
+}
+
 function check_apk_version {
     AAPT_OUTPUT="$(aapt dump badging "${1}")"
     VERSION_CODE="$(echo "${AAPT_OUTPUT}" | sed -En "s/.*versionCode='([^']*)'.*/\1/p")"
