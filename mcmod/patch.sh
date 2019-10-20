@@ -36,6 +36,7 @@ OUTPUT_FILENAME="mcmod_${PATCH_VERSION}_${PATCH_CODE}"
 KEYSTORE="mcmod.keystore"
 KEYSTORE_PASS="mcmod_key_password"
 KEYSTORE_ALIAS="mcmod_keystore"
+KEYSTORE_DNAME="CN=Modded by Hexile"
 
 # =============================== #
 # !!! DO NOT EDIT BEYOND THIS !!! #
