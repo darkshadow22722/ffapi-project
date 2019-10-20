@@ -170,11 +170,14 @@ info "Recompiling..."
 apktool b -p "${FRAMEWORK}" "${PATCH_FOLDER}" || error "There was an error recompiling the apk." 104
 
 # Sign and zipaling
-info "Signing APK..."
-jarsigner -keystore "${KEYSTORE}" -storepass "${KEYSTORE_PASS}" -keypass "${KEYSTORE_PASS}" -sigalg MD5withRSA -digestalg SHA1 -sigfile CERT -signedjar "${PATCH_FOLDER}/dist/${NAME}-patched-signed.apk" "${PATCH_FOLDER}/dist/${NAME}.apk" "${KEYSTORE_ALIAS}" || error "There was an error signing the APK." 107
-
 info "Zipaligning APK..."
-zipalign -f 4 "${PATCH_FOLDER}/dist/${NAME}-patched-signed.apk" "${OUTPUT_FILENAME}.apk" || error "There was an error zipaligning the APK." 108
+zipalign -f 4 "${PATCH_FOLDER}/dist/${NAME}.apk" "${OUTPUT_FILENAME}.apk" || \
+    error "There was an error zipaligning the APK." 108
+
+info "Signing APK..."
+apksigner sign --v3-signing-enabled false --ks "${KEYSTORE}" \
+    --ks-pass "pass:${KEYSTORE_PASS}" --ks-key-alias "${KEYSTORE_ALIAS}" \
+    "${OUTPUT_FILENAME}.apk" || error "There was an error signing the APK."
 
 # Final cleanup
 if [[ "${KEEP_FOLDER}" != true ]]; then
