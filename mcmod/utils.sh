@@ -56,11 +56,19 @@ function check_file {
 
 function print_apk_info {
     AAPT_OUTPUT="$(aapt dump badging "${1}")"
-    APP_LABEL="$(echo "${AAPT_OUTPUT}" | sed -En "s/application-label:'(.*)'/\1/p")"
-    PACKAGE_NAME="$(echo "${AAPT_OUTPUT}" | sed -En "s/package: name='([^']*)'.*/\1/p")"
-    VERSION_CODE="$(echo "${AAPT_OUTPUT}" | sed -En "s/.*versionCode='([^']*)'.*/\1/p")"
-    VERSION_NAME="$(echo "${AAPT_OUTPUT}" | sed -En "s/.*versionName='([^']*)'.*/\1/p")"
-    SUPPORTED_ARCHS="$(echo "${AAPT_OUTPUT}" | sed -En "s/native-code: (.*)/\1/p")"
+    APP_LABEL="$(echo "${AAPT_OUTPUT}" | \
+        sed -En "s/application-label:'(.*)'/\1/p")"
+    PACKAGE_NAME="$(echo "${AAPT_OUTPUT}" | \
+        sed -En "s/package: name='([^']*)'.*/\1/p")"
+    VERSION_CODE="$(echo "${AAPT_OUTPUT}" | \
+        sed -En "s/.*versionCode='([^']*)'.*/\1/p")"
+    VERSION_NAME="$(echo "${AAPT_OUTPUT}" | \
+        sed -En "s/.*versionName='([^']*)'.*/\1/p")"
+    MIN_SDK="$(echo "${AAPT_OUTPUT}" | sed -En "s/sdkVersion:'(.*)'/\1/p")"
+    TARGET_SDK="$(echo "${AAPT_OUTPUT}" | \
+        sed -En "s/targetSdkVersion:'(.*)'/\1/p")"
+    SUPPORTED_ARCHS="$(echo "${AAPT_OUTPUT}" | \
+        sed -En "s/native-code: (.*)/\1/p")"
 
     echo
     echo "${C_GREEN}Package info for ${1}:${C_RESET}"
@@ -68,6 +76,8 @@ function print_apk_info {
     echo "${C_BLUE}Package Name:${C_RESET} ${PACKAGE_NAME}"
     echo "${C_BLUE}Version Name:${C_RESET} ${VERSION_NAME}"
     echo "${C_BLUE}Version Code:${C_RESET} ${VERSION_CODE}"
+    echo "${C_BLUE}Minimun SDK:${C_RESET} ${MIN_SDK}"
+    echo "${C_BLUE}Target SDK:${C_RESET} ${TARGET_SDK}"
     echo "${C_BLUE}Supported Architectures:${C_RESET} ${SUPPORTED_ARCHS}"
     echo
 }
