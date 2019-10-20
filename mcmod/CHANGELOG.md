@@ -1,3 +1,7 @@
+## 2.2.0
+### Fix
+* Fixed macOS compatibility
+
 ## 2.1.0
 ### Fix
 * Automated `MainUrl_v2` and `SafetyNetRemover` patches
@@ -19,13 +23,13 @@
 * Added SafetyNet remover patch
 
 ## 2.0.2
-_Not logged_
+*Not logged*
 
 ## 2.0.1
-_Not logged_
+*Not logged*
 
 ## 2.0.1
-_Not logged_
+*Not logged*
 
 ## 1.0.2
 ### New
