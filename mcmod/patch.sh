@@ -26,7 +26,7 @@
 # 108: There was an error zipaligning the APK. Try again.
 # ============== #
 
-WORKING_VERSIONS=( "3807" "3964" "4086" )
+WORKING_VERSIONS=( "3807" "3964" "4086" "4257" )
 
 PATCH_VERSION="2.2.0"
 PATCH_CODE="0220"

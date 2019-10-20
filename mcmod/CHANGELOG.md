@@ -1,4 +1,5 @@
 ## 2.3.0
+Compatible with the original app v2.3.0 (4257).
 ### Fix
 * Switched keystore to PKCS12
 * Using `apksigner` instead of `jarsigner` to sign with Android scheme v2
