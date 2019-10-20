@@ -103,7 +103,11 @@ export PATH="$(pwd)/bin/universal/:$PATH"
 
 # Check for commands
 check_command java
-check_command jarsigner
+check_command keytool
+check_command apktool
+check_command aapt
+check_command zipalign
+check_command apksigner
 check_command sed
 check_command grep
 
