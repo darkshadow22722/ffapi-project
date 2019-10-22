@@ -81,12 +81,20 @@ function print_apk_info {
 }
 
 function print_apk_signed_info {
+    APK_CERT_DNAME="Not found"
+    APK_CERT_SEARCH="$(unzip -l "${1}" | grep META-INF/.*\.RSA | \
+        awk '{ print $4 }')"
+    if [[ "${APK_CERT_SEARCH}" ]]; then
+        APK_CERT_DNAME="$(unzip -p "${1}" "${APK_CERT_SEARCH}" | keytool -printcert | sed -En "s/Owner: (.*)/\1/p")"
+    fi
+
     APKSIGNER_OUTPUT="$(apksigner verify -v "${1}")"
     V1_SCHEME="$(echo "${APKSIGNER_OUTPUT}" | sed -n "s/Verified using v1 scheme (JAR signing): //p")"
     V2_SCHEME="$(echo "${APKSIGNER_OUTPUT}" | sed -n "s/Verified using v2 scheme (APK Signature Scheme v2): //p")"
     V3_SCHEME="$(echo "${APKSIGNER_OUTPUT}" | sed -n "s/Verified using v3 scheme (APK Signature Scheme v3): //p")"
 
     echo "${C_GREEN}Signature info for ${1}:${C_RESET}"
+    echo "${C_BLUE}DNAME:${C_RESET} ${APK_CERT_DNAME}"
     echo "${C_BLUE}Signed v1:${C_RESET} ${V1_SCHEME}"
     echo "${C_BLUE}Signed v2:${C_RESET} ${V2_SCHEME}"
     echo "${C_BLUE}Signed v3:${C_RESET} ${V3_SCHEME}"
