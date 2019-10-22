@@ -128,9 +128,13 @@ fi
 
 NAME=$(basename "${1}" .apk)
 
+echo
 print_apk_info "${1}"
+echo
 print_apk_signed_info "${1}"
+echo
 check_apk_version "${1}" "${WORKING_VERSIONS[@]}"
+echo
 
 OUTPUT_FILENAME="${OUTPUT_FILENAME}_${VERSION_CODE}"
 
@@ -195,7 +199,10 @@ if [[ "${KEEP_FOLDER}" != true ]]; then
     cleanup
 fi
 
+echo
 print_apk_info "${OUTPUT_FILENAME}.apk"
+echo
 print_apk_signed_info "${OUTPUT_FILENAME}.apk"
+echo
 
 echo "${C_GREEN}Done!${C_RESET}"

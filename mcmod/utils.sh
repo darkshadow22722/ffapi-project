@@ -70,7 +70,6 @@ function print_apk_info {
     SUPPORTED_ARCHS="$(echo "${AAPT_OUTPUT}" | \
         sed -En "s/native-code: (.*)/\1/p")"
 
-    echo
     echo "${C_GREEN}Package info for ${1}:${C_RESET}"
     echo "${C_BLUE}App Label:${C_RESET} ${APP_LABEL}"
     echo "${C_BLUE}Package Name:${C_RESET} ${PACKAGE_NAME}"
@@ -79,7 +78,6 @@ function print_apk_info {
     echo "${C_BLUE}Minimun SDK:${C_RESET} ${MIN_SDK}"
     echo "${C_BLUE}Target SDK:${C_RESET} ${TARGET_SDK}"
     echo "${C_BLUE}Supported Architectures:${C_RESET} ${SUPPORTED_ARCHS}"
-    echo
 }
 
 function print_apk_signed_info {
@@ -88,12 +86,10 @@ function print_apk_signed_info {
     V2_SCHEME="$(echo "${APKSIGNER_OUTPUT}" | sed -n "s/Verified using v2 scheme (APK Signature Scheme v2): //p")"
     V3_SCHEME="$(echo "${APKSIGNER_OUTPUT}" | sed -n "s/Verified using v3 scheme (APK Signature Scheme v3): //p")"
 
-    echo
     echo "${C_GREEN}Signature info for ${1}:${C_RESET}"
     echo "${C_BLUE}Signed v1:${C_RESET} ${V1_SCHEME}"
     echo "${C_BLUE}Signed v2:${C_RESET} ${V2_SCHEME}"
     echo "${C_BLUE}Signed v3:${C_RESET} ${V3_SCHEME}"
-    echo
 }
 
 function check_apk_version {
@@ -106,7 +102,6 @@ function check_apk_version {
     else
         echo "${C_YELLOW}WARNING: Version ${VERSION_CODE} of the app was not tested. The patch may not work."
     fi
-    echo
 }
 
 function containsElement {
