@@ -217,8 +217,10 @@ public class SplashActivity extends Activity {
         broadcastReceiver = new BroadcastReceiver() {
             @Override
             public void onReceive(Context context, Intent intent) {
-                if (intent.hasExtra(RestaurantService.BROADCAST_LOG)) {
-                    updateLog(intent.getStringExtra(RestaurantService.BROADCAST_LOG));
+                if (intent.hasExtra(RestaurantService.BROADCAST_LOG_TAG) &&
+                        intent.hasExtra(RestaurantService.BROADCAST_LOG_MESSAGE)) {
+                    updateLog(intent.getStringExtra(RestaurantService.BROADCAST_LOG_TAG),
+                            intent.getStringExtra(RestaurantService.BROADCAST_LOG_MESSAGE));
                 }
             }
         };
@@ -247,17 +249,25 @@ public class SplashActivity extends Activity {
         super.onStop();
     }
 
-    public void updateLog(String line) {
+    public void updateLog(String tag, String message) {
         @SuppressLint("SimpleDateFormat") SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH:mm:ss");
 
-        logBuilder
-                .append("[")
-                .append(simpleDateFormat.format(new Date()))
-                .append("] ")
-                .append(line)
-                .append('\n');
+        String textColor = "#ffffff";
+        if (tag.startsWith("E"))
+            textColor = "#ff0000";
 
-        logTextView.setText(logBuilder.toString());
+        logBuilder
+                .append("<font color=\"")
+                .append(textColor)
+                .append("\">[")
+                .append(simpleDateFormat.format(new Date()))
+                .append(" ")
+                .append(tag)
+                .append("] ")
+                .append(message)
+                .append("</font><br>");
+
+        logTextView.setText(Html.fromHtml(logBuilder.toString()), TextView.BufferType.SPANNABLE);
 
         if (autoscrollCheckBox.isChecked()) {
             logScrollView.post(() -> {
@@ -297,14 +307,14 @@ public class SplashActivity extends Activity {
                         nodeDatabaseEditText.getText().toString());
                 sharedPreferencesEditor.apply();
 
-                updateLog("Starting " + nodeNameEditText.getText().toString() + " for " +
+                updateLog("I", "Starting " + nodeNameEditText.getText().toString() + " for " +
                         nodeDatabaseEditText.getText().toString() + " [" +
                         BuildConfig.VERSION_NAME + "]...");
 
                 startService(serviceIntent);
                 updateStatus();
             } else {
-                updateLog("Stopping Node...");
+                updateLog("I","Stopping Node...");
 
                 stopService(serviceIntent);
                 updateStatus();
