@@ -24,6 +24,7 @@
         <provider android:name="com.facebook.internal.FacebookInitProvider" android:authorities="vduajuippeglzwzyminh"/>
         <provider android:name="androidx.lifecycle.ProcessLifecycleOwnerInitializer" android:authorities="hiqosdzozbpywhetdmwx"/>
         <provider android:name="com.squareup.picasso.PicassoProvider" android:authorities="ilcxxyxuhmpwlwneigfk"/>
+        <provider android:name="com.crashlytics.android.CrashlyticsInitProvider" android:authorities="jsdfosfncebiuasdhyud"/>
         <service android:name="mcdonalds.restaurant.location.LocationService"/>
         <service android:name="mcdonalds.restaurant.network.RestaurantService"/>
         <service android:name="mcdonalds.restaurant.network.SearchService"/>
