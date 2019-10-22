@@ -67,6 +67,8 @@ public class RestaurantService extends Service {
 
     public static final String BROADCAST_FILTER = "mcmod.service.broadcast";
     public static final String BROADCAST_LOG = BROADCAST_FILTER + ".log";
+    public static final String BROADCAST_LOG_TAG = BROADCAST_LOG + ".tag";
+    public static final String BROADCAST_LOG_MESSAGE = BROADCAST_LOG + ".message";
 
     public static int NOTIFICATION_ICON = android.R.drawable.ic_dialog_info;
     public static int NOTIFICATION_ACTION_ICON = android.R.drawable.ic_media_pause;
@@ -91,7 +93,7 @@ public class RestaurantService extends Service {
     private String nodeName;
     private String nodeDatabase;
     private String nodeUuid;
-    private int currentId = 24806;
+    private int currentId = 24806; // Placeholder ID, can be anything
 
     private boolean isRunning = false;
 
@@ -155,7 +157,8 @@ public class RestaurantService extends Service {
 
     public void sendLog(String tag, String message) {
         Intent intent = new Intent(BROADCAST_FILTER);
-        intent.putExtra(BROADCAST_LOG, "[" + tag + "] " + message);
+        intent.putExtra(BROADCAST_LOG_TAG, tag);
+        intent.putExtra(BROADCAST_LOG_MESSAGE, message);
         broadcaster.sendBroadcast(intent);
     }
 
@@ -214,13 +217,13 @@ public class RestaurantService extends Service {
 
     private boolean isTokenValid(String token) {
         String payload = new String(Base64.decode(token.split("\\.")[1], Base64.DEFAULT));
-        sendLog("SNET:PAYLOAD", payload);
+        sendLog("D:SafetyNetPayload", payload);
 
         try {
             JSONObject jsonObject = new JSONObject(payload);
 
             if (jsonObject.has("error")) {
-                sendLog("SNET:ERROR", jsonObject.getString("error"));
+                sendLog("E:SafetyNet", jsonObject.getString("error"));
                 return false;
             }
         } catch (JSONException e) {
