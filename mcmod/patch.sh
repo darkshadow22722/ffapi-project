@@ -34,8 +34,8 @@ PATCH_CODE="0230"
 OUTPUT_FILENAME="mcmod_${PATCH_VERSION}_${PATCH_CODE}"
 
 KEYSTORE="mcmod.keystore"
-KEYSTORE_PASS="mcmod_key_password"
-KEYSTORE_ALIAS="mcmod_keystore"
+KEYSTORE_PASS="mcmod_password"
+KEYSTORE_ALIAS="mcmod"
 KEYSTORE_DNAME="CN=Modded by Hexile, DC=https://github.com/giacomoferretti/ffapi-project/tree/master/mcmod"
 
 # =============================== #
