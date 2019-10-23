@@ -266,6 +266,8 @@ public class ChangeDigestAsyncTask extends AsyncTask<Void, String, String> {
         } catch (PackageManager.NameNotFoundException | NoSuchAlgorithmException | IOException e) {
             e.printStackTrace();
             sendLog("ERROR: " + e.getMessage());
+            if (e.getMessage().equals("com.mcdonalds.mobileapp"))
+                apkDigest = "McDonald's app is not installed. The node won't work.";
         }
 
         return apkDigest;
