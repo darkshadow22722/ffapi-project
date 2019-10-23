@@ -196,7 +196,9 @@ public class RestaurantService extends Service {
                 .setContentIntent(activityIntent)
                 .build();
 
-        startForeground(SERVICE_ID, notification);
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.O) {
+            startForeground(SERVICE_ID, notification);
+        }
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
