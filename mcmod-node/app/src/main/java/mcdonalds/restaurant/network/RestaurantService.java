@@ -393,7 +393,7 @@ public class RestaurantService extends Service {
                             sendLog("E:16", "SafetyNet: CANCELED (ratelimit)");
                             break;
                         case "7: ":
-                            sendLog("E:7", "SafetyNet: NETWORK_ERROR");
+                            sendLog("E:7", "SafetyNet: NETWORK_ERROR (maybe wrong api_key or wrong cert_sha1)");
                             break;
                         default:
                             sendLog("E", e.getMessage());
