@@ -9,8 +9,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
-import android.os.AsyncTask;
-import android.os.Binder;
 import android.os.Build;
 import android.os.IBinder;
 import android.util.Base64;
