@@ -301,10 +301,17 @@ public class SplashActivity extends Activity {
             Intent serviceIntent = new Intent(this, RestaurantService.class);
 
             if (!isServiceRunning(RestaurantService.class)) {
-                sharedPreferencesEditor.putString(AppApplication.SETTINGS_NODE_NAME,
-                        nodeNameEditText.getText().toString());
-                sharedPreferencesEditor.putString(AppApplication.SETTINGS_NODE_DB,
-                        nodeDatabaseEditText.getText().toString());
+                String nodeName = nodeNameEditText.getText().toString();
+                if (nodeName.isEmpty())
+                    nodeName = "default_node";
+
+                String nodeDatabase = nodeDatabaseEditText.getText().toString();
+                if (nodeDatabase.isEmpty())
+                    nodeDatabase = "default";
+
+
+                sharedPreferencesEditor.putString(AppApplication.SETTINGS_NODE_NAME, nodeName);
+                sharedPreferencesEditor.putString(AppApplication.SETTINGS_NODE_DB, nodeDatabase);
                 sharedPreferencesEditor.apply();
 
                 updateLog("I", "Starting " + nodeNameEditText.getText().toString() + " for " +
