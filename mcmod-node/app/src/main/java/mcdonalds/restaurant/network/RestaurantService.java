@@ -266,27 +266,33 @@ public class RestaurantService extends Service {
 
             @Override
             public void onResponse(Call call, Response response) throws IOException {
-                String body = response.body().string();
+                String responseBody = response.body().string();
 
                 Log.d("getTask:onResponse:code", String.valueOf(response.code()));
-                Log.d("getTask:onResponse:body", body);
+                Log.d("getTask:onResponse:body", responseBody);
 
                 if (response.code() != 200) {
-                    sendLog("E", body);
+                    sendLog("E", responseBody);
                     return;
                 }
 
                 try {
-                    JSONObject jsonResponse = new JSONObject(body);
+                    JSONObject jsonResponse = new JSONObject(responseBody);
 
+                    String body = jsonResponse.getString("body");
+                    String method = jsonResponse.getString("method");
+                    String url = jsonResponse.getString("url");
+                    String host = jsonResponse.getString("host");
+                    String date = jsonResponse.getString("date");
                     String authorization = jsonResponse.getString("authorization");
-                    String vmob = jsonResponse.getString("vmob");
-                    currentId = jsonResponse.getInt("id");
-                    String name = jsonResponse.getString("name");
-                    sendLog("I", "Generating offer " + currentId + "...\n" + name);
+                    String digest = jsonResponse.getString("digest");
+                    String contentLength = jsonResponse.getString("content_length");
+                    String extra = jsonResponse.getString("extra");
+
+                    sendLog("I", "Generating " + body + "...");
                     if (!isRunning)
                         return;
-                    postToken(authorization, vmob);
+                    postToken(body, method, url, host, date, authorization, digest, contentLength, extra);
                 } catch (JSONException e) {
                     sendLog("E", e.getMessage());
                     e.printStackTrace();
@@ -295,26 +301,29 @@ public class RestaurantService extends Service {
         });
     }
 
-    private void postToken(String auth, String vmob) {
+    private String formatHeader(String header, String body) {
+        String output = header + ":";
+        if (!body.isEmpty())
+            output += " " + body;
+
+        return output;
+    }
+
+    private void postToken(String body, String method, String url, String host, String date, String authorization, String digest, String contentLength, String extra) {
         if (!isRunning)
             return;
 
-        String body = Utils.couponBody(String.valueOf(currentId));
-        String method = "post";
-        String host = "dif-dot-prd-euw-gmal-mcdonalds.appspot.com";
-        String digest = "SHA-256=" + Utils.digestSha256(body);
-        String date = Utils.getDate();
-        int contentLength = body.length();
+        StringBuilder nonceBuilder = new StringBuilder();
+        nonceBuilder
+                .append(formatHeader("(request-target)", method + " " + url))
+                .append(formatHeader("host", host))
+                .append(formatHeader("date", date))
+                .append(formatHeader("authorization", authorization))
+                .append(formatHeader("digest", digest))
+                .append(formatHeader("content-length", contentLength));
+        String nonceString = nonceBuilder.toString();
 
-        byte[] nonceBytes = Utils.digestBytesSha512(String.format(
-                "(request-target): %s %s\n" +
-                "host: %s\n" +
-                "date: %s\n" +
-                "authorization: %s\n" +
-                "digest: %s\n" +
-                "content-length: %s",
-                method, "/plexure/v1/con/v3/consumers/redeemedOffers", host,
-                date, auth, digest, contentLength));
+        byte[] nonceBytes = Utils.digestBytesSha512(nonceString);
 
         SafetyNet.getClient(this).attest(nonceBytes, AppApplication.API_KEY)
                 .addOnSuccessListener(x -> {
@@ -330,10 +339,14 @@ public class RestaurantService extends Service {
                         JSONObject jsonObject = new JSONObject();
                         jsonObject.put("token", token);
                         jsonObject.put("body", body);
-                        jsonObject.put("authorization", auth);
+                        jsonObject.put("method", method);
+                        jsonObject.put("url", url);
+                        jsonObject.put("host", host);
                         jsonObject.put("date", date);
+                        jsonObject.put("authorization", authorization);
                         jsonObject.put("digest", digest);
-                        jsonObject.put("vmob", vmob);
+                        jsonObject.put("content_length", contentLength);
+                        jsonObject.put("extra", extra);
 
                         RequestBody reqBody = RequestBody.create(MediaType.parse("application/json"),
                                 jsonObject.toString());
