@@ -1,6 +1,3 @@
-[![Codacy grade](https://img.shields.io/codacy/grade/ab6d5294a943426bbba4919ac7d6d5e7?label=Code%20quality)](https://www.codacy.com/manual/giacomoferretti/ffapi-project)
-[![GitHub license](https://img.shields.io/github/license/giacomoferretti/ffapi-project.svg?color=informational&label=License)](https://github.com/giacomoferretti/ffapi-project/blob/master/LICENSE)
-[![Donate](https://img.shields.io/badge/Donate-PayPal-blue.svg)][donate]
 
 # Fast Food API Project
 
